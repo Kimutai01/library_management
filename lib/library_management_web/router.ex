@@ -17,7 +17,10 @@ defmodule LibraryManagementWeb.Router do
   scope "/", LibraryManagementWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", BookController, :index
+    resources "/books", BookController do
+      post "/review", BookController, :add_a_review
+    end
   end
 
   # Other scopes may use custom stacks.
